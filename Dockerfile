@@ -9,7 +9,7 @@ ADD 90-devops.sh profile.d/90-devops.sh
 
 RUN yum -y update
 RUN yum clean all
-RUN yum -y install openssh-server passwd vim wget byobu net-tools rsync
+RUN yum -y install openssh-server passwd vim wget byobu net-tools rsync pigz pxz
 RUN yum clean all
 
 
