@@ -9,10 +9,12 @@ RUN rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 ADD 90-devops.sh profile.d/90-devops.sh
 
 RUN yum -y update
-RUN yum -y install openssh-server passwd vim wget byobu net-tools rsync pigz pxz sudo
+RUN yum -y install openssh-server openssh-clients passwd vim wget byobu net-tools rsync pigz pxz sudo
 RUN yum clean all && rm -rf /var/cache/yum
 
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+ADD sshd_config /etc/ssh/sshd_config
+
+RUN ssh-keygen -A
 RUN sudo ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime
 
 ADD ./start.sh /start.sh
