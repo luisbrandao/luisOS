@@ -7,8 +7,8 @@ USER_PASS="pass321"
 
 useradd ${USER}
 echo -e "${USER_PASS}\n${USER_PASS}" | (passwd --stdin ${USER})
+usermod -a -G wheel ${user}
 echo ssh ${USER} password: ${USER_PASS}
-hostname -i
 }
 
 # Call all functions
