@@ -1,5 +1,6 @@
 FROM centos:latest
 MAINTAINER Luis Alexandre Deschamps Brandão
+EXPOSE 22
 
 RUN echo "clean_requirements_on_remove=1" >> /etc/yum.conf
 
@@ -11,7 +12,7 @@ RUN yum -y update
 RUN yum -y install openssh-server passwd vim wget byobu net-tools rsync pigz pxz
 RUN yum clean all && rm -rf /var/cache/yum
 
+ADD ./start.sh /start.sh
 RUN chmod 755 /start.sh
-EXPOSE 22
 RUN ./start.sh
 ENTRYPOINT ["/usr/sbin/sshd", "-D"]
