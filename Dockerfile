@@ -12,6 +12,8 @@ RUN yum -y update
 RUN yum -y install openssh-server passwd vim wget byobu net-tools rsync pigz pxz
 RUN yum clean all && rm -rf /var/cache/yum
 
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' 
+
 ADD ./start.sh /start.sh
 RUN chmod 755 /start.sh
 RUN ./start.sh
