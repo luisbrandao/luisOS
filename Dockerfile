@@ -8,10 +8,8 @@ RUN rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 ADD 90-devops.sh profile.d/90-devops.sh
 
 RUN yum -y update
-RUN yum clean all
 RUN yum -y install openssh-server passwd vim wget byobu net-tools rsync pigz pxz
-RUN yum clean all
-
+RUN yum clean all && rm -rf /var/cache/yum
 
 RUN chmod 755 /start.sh
 EXPOSE 22
