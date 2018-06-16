@@ -18,7 +18,7 @@ RUN ssh-keygen -A
 RUN sudo ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime
 
 ADD ./start.sh /start.sh
-RUN bash start.sh && rn -f start.sh
+RUN bash start.sh && rm -f start.sh
 ADD 80-techmago-user /etc/sudoers.d/80-techmago-user
 RUN chmod 440 /etc/sudoers.d/*
 
