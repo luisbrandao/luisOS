@@ -2,10 +2,12 @@
 
 __create_user() {
 # Create a user to SSH into as.
-useradd techmago
-SSH_USERPASS=oran
-echo -e "$SSH_USERPASS\n$SSH_USERPASS" | (passwd --stdin user)
-echo ssh user password: $SSH_USERPASS
+USER="techmago"
+USER_PASS="pass321"
+
+useradd ${USER}
+echo -e "${USER_PASS}\n${USER_PASS}" | (passwd --stdin ${USER})
+echo ssh ${USER} password: ${USER_PASS}
 hostname -i
 }
 
