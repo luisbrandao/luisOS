@@ -3,7 +3,7 @@ release=$(cat release)
 echo "Gerando relase: ${release}"
 
 # Gera uma build
-docker build -t rentos:latest -t LuisOS:${release} .
+docker build -t rentos:latest -t luisOS:${release} .
 hash=$(docker images | grep ${release} | awk '{print $3}' | uniq)
 
 # Tagueia a imagem e a salva no registro
