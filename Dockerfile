@@ -1,6 +1,5 @@
 FROM centos/systemd
-MAINTAINER Luis Alexandre Deschamps Brandão
-EXPOSE 22
+MAINTAINER Luis Alexandre Deschamps Brandão <techmago@ymail.com>
 
 RUN echo "clean_requirements_on_remove=1" >> /etc/yum.conf
 
@@ -23,5 +22,6 @@ ADD 80-techmago-user /etc/sudoers.d/80-techmago-user
 RUN chmod 440 /etc/sudoers.d/*
 
 RUN systemctl enable sshd.service
+EXPOSE 22
 CMD ["/usr/sbin/init"]
 #ENTRYPOINT ["/usr/sbin/init"]
