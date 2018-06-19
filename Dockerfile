@@ -35,5 +35,5 @@ ADD 80-techmago-user /etc/sudoers.d/80-techmago-user
 RUN chmod 440 /etc/sudoers.d/*
 
 RUN systemctl enable sshd.service
-# CMD ["/usr/sbin/init"]
-ENTRYPOINT ["/usr/sbin/init"]
+CMD ["/usr/sbin/init"]
+#ENTRYPOINT ["/usr/sbin/init"]
