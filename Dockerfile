@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos/systemd
 MAINTAINER Luis Alexandre Deschamps Brandão
 EXPOSE 22
 
@@ -16,18 +16,6 @@ ADD sshd_config /etc/ssh/sshd_config
 
 RUN ssh-keygen -A
 RUN sudo ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime
-
-ENV container docker
-# Enable systemd for use
-RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
-rm -f /lib/systemd/system/multi-user.target.wants/*;\
-rm -f /etc/systemd/system/*.wants/*;\
-rm -f /lib/systemd/system/local-fs.target.wants/*; \
-rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
-rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
-rm -f /lib/systemd/system/basic.target.wants/*;\
-rm -f /lib/systemd/system/anaconda.target.wants/*;
-# VOLUME [ "/sys/fs/cgroup" ]
 
 ADD ./start.sh /start.sh
 RUN bash start.sh && rm -f start.sh
