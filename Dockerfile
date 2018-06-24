@@ -23,5 +23,7 @@ RUN chmod 440 /etc/sudoers.d/*
 
 RUN systemctl enable sshd.service
 EXPOSE 22
+EXPOSE 80
+EXPOSE 433
 CMD ["/usr/sbin/init"]
 #ENTRYPOINT ["/usr/sbin/init"]
