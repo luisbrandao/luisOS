@@ -2,14 +2,14 @@ FROM centos/systemd
 MAINTAINER Luis Alexandre Deschamps Brandão <techmago@ymail.com>
 
 RUN echo "clean_requirements_on_remove=1" >> /etc/yum.conf
-
-RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-RUN rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 ADD 90-devops.sh /etc/profile.d/90-devops.sh
 
-RUN yum -y update
-RUN yum -y install openssh-server openssh-clients passwd vim wget byobu net-tools rsync pigz pxz sudo
-RUN yum clean all && rm -rf /var/cache/yum
+RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
+    rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
+    yum -y update && \
+    yum -y install openssh-server openssh-clients passwd vim wget byobu net-tools rsync pigz pxz sudo && \
+    yum clean all && \
+    rm -rf /var/cache/yum
 
 ADD sshd_config /etc/ssh/sshd_config
 
