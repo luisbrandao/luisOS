@@ -9,8 +9,7 @@ RUN ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime && \
     rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     yum -y update && \
     yum -y install openssh-server openssh-clients passwd vim wget byobu net-tools rsync pigz pxz sudo && \
-    yum clean all && \
-    rm -rf /var/cache/yum
+    yum clean all && rm -rf /var/cache/yum
 
 ADD sshd_config /etc/ssh/sshd_config
 RUN ssh-keygen -A
