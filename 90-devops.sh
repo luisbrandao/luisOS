@@ -62,6 +62,7 @@ alias l='ls -CF'
 alias vi='vim'
 alias tm="tail -f /var/log/messages"
 alias tapache="tail -f /var/log/httpd/*_log"
+alias tnginx="tail -f /var/log/nginx/*.log"
 alias l="ls -laF --color=tty"
 alias halt="echo 'use shutdown -h now!!!' ; shutdown -h now"
 alias tsquid='tail -f /var/log/squid/access.log | perl -pe "s/^\d+\.\d+/localtime $&/e"'

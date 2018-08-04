@@ -1,2 +1,0 @@
-# User rules for centos
-techmago ALL=(ALL) NOPASSWD:ALL

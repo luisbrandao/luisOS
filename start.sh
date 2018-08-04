@@ -1,15 +1,23 @@
 #!/bin/bash
-
-__create_user() {
 # Create a user to SSH into as.
-USER="techmago"
-USER_PASS="pass321"
+
+USER="$1"
+USER_PASS="$2"
+
+echo
+echo
+echo ===========================
+echo "ssh-user: ${USER}"
+echo "password: ${USER_PASS}"
+echo "==========================="
+echo
+echo
 
 useradd ${USER}
 echo -e "${USER_PASS}\n${USER_PASS}" | (passwd --stdin ${USER})
 usermod -a -G wheel ${USER}
-echo ssh ${USER} password: ${USER_PASS}
-}
 
-# Call all functions
-__create_user
+cat <<EOF >>/etc/sudoers.d/80-${USER}-user
+# User rules for luisos
+${USER} ALL=(ALL) NOPASSWD:ALL
+EOF
