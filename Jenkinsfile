@@ -25,14 +25,6 @@ node {
     prepareSCM()
 
     build()
-
-    compressArtifact()
-
-    uploadArtifact()
-
-    deploy()
-
-    info()
   }
 }
 
