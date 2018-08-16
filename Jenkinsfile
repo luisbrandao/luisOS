@@ -46,6 +46,6 @@ def prepareSCM() {
 
 def build() {
   stage('Build') {
-    app = docker.build("luisOS")
+    app = docker.build("luisOS:1.2.${BUILD_NUMBER}")
   }
 }
