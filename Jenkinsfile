@@ -8,8 +8,6 @@ println "BUILD_NUMBER: " + BUILD_NUMBER
 // Common Defs
 APP_NAME = 'luisOS'
 DEPLOY_TARGET = ['master']
-APP = null // Define APP
-
 
 // Environment-specifc variables
 switch(JOB_BASE_NAME) {
@@ -20,7 +18,7 @@ switch(JOB_BASE_NAME) {
 
 // Steps
 properties([disableConcurrentBuilds(), pipelineTriggers([])])
-node {
+node("gw.brandao") {
   if (BRANCH_NAME in DEPLOY_TARGET) {
     prepareSCM()
 
@@ -38,6 +36,12 @@ def prepareSCM() {
 
 def build() {
   stage('Build') {
-    app = docker.build("luisos")
+    sh"""#!/bin/bash
+    echo "Gerando relase: ${BUILD_NUMBER}"
+
+    # Gera uma build
+    docker build -t luisos:latest -t luisos:${BUILD_NUMBER} .
+    hash=$(docker images | grep ${release} | awk '{print $3}' | uniq)
+    """
   }
 }
