@@ -6,7 +6,7 @@ println "JOB_BASE_NAME " + JOB_BASE_NAME
 println "BUILD_NUMBER: " + BUILD_NUMBER
 
 // Common Defs
-APP_NAME = 'luisOS'
+APP_NAME = 'luisos'
 DEPLOY_TARGET = ['master']
 
 // Environment-specifc variables
@@ -37,11 +37,7 @@ def prepareSCM() {
 def build() {
   stage('Build') {
     sh"""#!/bin/bash
-    echo "Gerando relase: ${BUILD_NUMBER}"
-
-    # Gera uma build
-    docker build -t luisos:latest -t luisos:${BUILD_NUMBER} .
-    hash=$(docker images | grep ${release} | awk '{print $3}' | uniq)
+    docker build --no-cache=true -t ${APP_NAME}:latest -t ${APP_NAME}:${BUILD_NUMBER} .
     """
   }
 }
