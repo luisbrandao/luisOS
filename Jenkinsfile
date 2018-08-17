@@ -6,7 +6,6 @@ println "BUILD_NUMBER: " + BUILD_NUMBER
 
 // Common Defs
 APP_NAME = 'luisos'
-DEPLOY_TARGET = ['master']
 
 // Steps
 properties([disableConcurrentBuilds(), pipelineTriggers([])])
@@ -21,7 +20,6 @@ def prepareSCM() {
     checkout scm
   }
 }
-
 
 def build() {
   stage('Build') {
