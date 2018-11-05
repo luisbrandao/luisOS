@@ -55,7 +55,7 @@ AuthorizedKeysFile	.ssh/authorized_keys
 #HostbasedAuthentication no
 # Change to yes if you don't trust ~/.ssh/known_hosts for
 # HostbasedAuthentication
-#IgnoreUserKnownHosts no
+IgnoreUserKnownHosts yes
 # Don't read the user's ~/.rhosts and ~/.shosts files
 #IgnoreRhosts yes
 
