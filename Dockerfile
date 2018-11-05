@@ -21,7 +21,7 @@ RUN bash start.sh luisos pass321 && \
     rm -f start.sh && \
     chmod 440 /etc/sudoers.d/*
 
-RUN mkdir -p /home/luisos/.ssh/authorized_keys
+RUN mkdir -p /home/luisos/.ssh/
 ADD authorized_keys /home/luisos/.ssh/authorized_keys
 RUN chmod 400 /home/luisos/.ssh/authorized_keys && \
     chown luisos:luisos /home/luisos/.ssh/authorized_keys
