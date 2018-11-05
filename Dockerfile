@@ -19,6 +19,11 @@ RUN bash start.sh luisos pass321 && \
     rm -f start.sh && \
     chmod 440 /etc/sudoers.d/*
 
+RUN mkdir -p /home/luisos/.ssh/authorized_keys
+ADD authorized_keys /home/luisos/.ssh/authorized_keys
+RUN chmod 400 /home/luisos/.ssh/authorized_keys && \
+    chown luisos:luisos /home/luisos/.ssh/authorized_keys
+
 RUN systemctl enable sshd.service
 EXPOSE 22
 EXPOSE 80
