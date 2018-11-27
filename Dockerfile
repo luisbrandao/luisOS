@@ -7,6 +7,7 @@ ADD techmago-centos.repo /etc/yum.repos.d/techmago-centos.repo
 
 RUN ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime && \
     echo "clean_requirements_on_remove=1" >> /etc/yum.conf && \
+    echo "ip_resolve=4" >> /etc/yum.conf && \
     rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     yum -y update && \
