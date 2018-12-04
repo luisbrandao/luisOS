@@ -12,6 +12,7 @@ properties([disableConcurrentBuilds(), pipelineTriggers([])])
 node("gw.brandao") {
   prepareSCM()
   build()
+  downstreamCascate()
 }
 
 def prepareSCM() {
@@ -27,4 +28,10 @@ def build() {
       docker build --add-host techmago.sytes.net:172.17.0.1 --no-cache=true -t ${APP_NAME}:latest -t ${APP_NAME}:${BUILD_NUMBER} .
     """
   }
+}
+
+def downstreamCascate() {
+  build 'luisos-jenkins'
+  build 'luisos-rails'
+  build 'luisos-zabbix'
 }
