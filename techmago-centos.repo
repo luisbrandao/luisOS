@@ -1,6 +1,6 @@
 [techmago-centos]
 name=Techmago main repo
-baseurl=http://techmago.sytes.net:8081/repository/centos-$releasever
+baseurl=https://repo.techsytes.com/repository/centos-$releasever
 enabled=1
 skip_if_unavailable=1
 enabled_metadata=1
