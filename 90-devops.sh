@@ -66,9 +66,9 @@ alias tnginx="tail -f /var/log/nginx/*.log"
 alias l="ls -laF --color=tty"
 alias halt="echo 'use shutdown -h now!!!' ; shutdown -h now"
 alias tsquid='tail -f /var/log/squid/access.log | perl -pe "s/^\d+\.\d+/localtime $&/e"'
-alias compress='tar -I "pigz" -cvf'
+alias compress='tar -I "pigz --best" -cvf'
 alias extract="tar xvzf"
-alias xcompress='tar -I "pxz" -cvf'
+alias xcompress='tar -I "pxz --best" -cvf'
 alias xextract="tar -Jxxvf"
 alias ftpython='echo "Files will be avaliable at $(hostname -I) port 8000" ; ftpython'
 alias pull_stage="hub pull-request -b stage -m"
