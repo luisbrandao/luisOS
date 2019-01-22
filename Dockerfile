@@ -11,7 +11,7 @@ RUN ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime && \
     rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
     rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
     yum -y update && \
-    yum -y --nogpgcheck install openssh-server openssh-clients passwd vim wget byobu net-tools rsync pigz pxz sudo git && \
+    yum -y --nogpgcheck install openssh-server openssh-clients passwd vim wget byobu net-tools rsync pigz pxz sudo git bind-utils && \
     yum clean all && rm -rf /var/cache/yum
 
 ADD sshd_config /etc/ssh/sshd_config
