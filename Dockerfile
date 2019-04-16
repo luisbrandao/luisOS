@@ -10,7 +10,7 @@ RUN ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime && \
     yum-config-manager --disable base updates extras centosplus && \
     yum -y install --nogpgcheck yum-utils && \
     yum -y update && \
-    yum -y --nogpgcheck install openssh-server openssh-clients passwd vim wget byobu net-tools rsync pigz pxz sudo git bind-utils && \
+    yum -y --nogpgcheck install openssh-server openssh-clients passwd vim wget byobu net-tools rsync pigz pxz sudo git bind-utils file && \
     yum clean all && rm -rf /var/cache/yum
 
 ADD sshd_config /etc/ssh/sshd_config
