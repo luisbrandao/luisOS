@@ -3,13 +3,12 @@ MAINTAINER Luis Alexandre Deschamps Brandão <techmago@ymail.com>
 
 ADD 90-devops.sh /etc/profile.d/90-devops.sh
 
-ADD techmago-centos.repo /etc/yum.repos.d/techmago-centos.repo
-
 RUN ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime && \
     echo "clean_requirements_on_remove=1" >> /etc/yum.conf && \
     echo "ip_resolve=4" >> /etc/yum.conf && \
-    rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm && \
-    rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm && \
+    yum-config-manager --add-repo=https://techmago.sytes.net/rpm/techmago-centos.repo && \
+    yum-config-manager --disable base updates extras centosplus && \
+    yum -y install --nogpgcheck yum-utils && \
     yum -y update && \
     yum -y --nogpgcheck install openssh-server openssh-clients passwd vim wget byobu net-tools rsync pigz pxz sudo git bind-utils && \
     yum clean all && rm -rf /var/cache/yum

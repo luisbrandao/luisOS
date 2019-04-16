@@ -1,8 +1,0 @@
-[techmago-centos]
-name=Techmago main repo
-baseurl=https://repo.techsytes.com/repository/centos-$releasever
-enabled=1
-skip_if_unavailable=1
-enabled_metadata=1
-metadata_expire=6h
-gpgcheck=0
