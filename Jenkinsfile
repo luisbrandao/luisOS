@@ -9,7 +9,7 @@ APP_NAME = 'luisos'
 VERSION = "${BUILD_NUMBER}"
 
 // Pipeline settings
-properties([disableConcurrentBuilds(), pipelineTriggers([upstream('luisos')])])
+properties([disableConcurrentBuilds(), pipelineTriggers([])])
 
 // Steps
 node() {
