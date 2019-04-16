@@ -10,7 +10,7 @@ VERSION = "${BUILD_NUMBER}"
 
 // Steps
 properties([disableConcurrentBuilds(), pipelineTriggers([])])
-node("gw.brandao") {
+node() {
   // Load Global common Functions
   echo "Carregando arquivo groovy com as funções common. (Managed files -> Common)"
   configFileProvider([configFile(fileId: '79f2f213-9098-48f6-be67-f0f4823841a8', variable: 'commonGroovy')]) { common = load( "${commonGroovy}" ) }
