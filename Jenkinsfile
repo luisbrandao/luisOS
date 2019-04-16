@@ -8,8 +8,10 @@ println "BUILD_NUMBER: " + BUILD_NUMBER
 APP_NAME = 'luisos'
 VERSION = "${BUILD_NUMBER}"
 
+// Pipeline settings
+properties([disableConcurrentBuilds(), pipelineTriggers([upstream('luisos')])])
+
 // Steps
-properties([disableConcurrentBuilds(), pipelineTriggers([])])
 node() {
   // Load Global common Functions
   echo "Carregando arquivo groovy com as funções common. (Managed files -> Common)"
