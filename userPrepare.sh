@@ -21,3 +21,5 @@ cat <<EOF >>/etc/sudoers.d/80-${USER}-user
 # User rules for luisos
 ${USER} ALL=(ALL) NOPASSWD:ALL
 EOF
+
+chmod 440 /etc/sudoers.d/*

@@ -31,10 +31,9 @@ RUN ln -sf /usr/share/zoneinfo/Brazil/East /etc/localtime && \
 ADD sshd_config /etc/ssh/sshd_config
 RUN ssh-keygen -A
 
-ADD ./start.sh /start.sh
-RUN bash start.sh luisos pass321 && \
-    rm -f start.sh && \
-    chmod 440 /etc/sudoers.d/*
+ADD ./userPrepare.sh /userPrepare.sh
+RUN bash userPrepare.sh luisos pass321 && \
+    rm -f userPrepare.sh
 
 RUN mkdir -p /home/luisos/.ssh/
 ADD authorized_keys /home/luisos/.ssh/authorized_keys
